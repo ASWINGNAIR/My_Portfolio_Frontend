@@ -3,6 +3,7 @@ import Img1 from '../assets/profImg1.jpg';
 import Resume from '../assets/ASWIN_Feb_RESUME.pdf';
 import Skills from '../Components/Skills'
 import Education from '../Components/Education'
+import Contact from '../Components/Contact'
 
 function Home() {
   return (
@@ -69,6 +70,8 @@ function Home() {
       <Skills />
 
       <Education />
+
+      <Contact />
 
     </>
   )

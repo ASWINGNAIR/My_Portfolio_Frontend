@@ -2,12 +2,11 @@ import React from 'react';
 
 function Education() {
   return (
-    <div className="container-fluid py-5" style={{ backgroundColor: "silver" }} id='education'>
+    <div className="container py-5 mb-5" style={{ backgroundColor: "silver" }} id='education'>
       <h1 className='text-center text-light fw-bolder' style={{ fontSize: "50px" }}>Education</h1>
-      <hr />
 
       <div className="container">
-        <div className="row justify-content-center pt-4">
+        <div className="row justify-content-center pt-4 mt-4">
       
           <div className='col-lg-8 col-md-10 col-sm-12 p-4 shadow rounded-3 bg-white mb-4'>
             <h3 className='fw-bold' style={{ fontSize: "30px" }}>Bachelor's Degree in Computer Science & Engineering</h3>

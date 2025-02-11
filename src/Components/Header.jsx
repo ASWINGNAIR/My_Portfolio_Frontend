@@ -23,7 +23,7 @@ function Header() {
             <Nav.Link href="#skill" className='ms-3'>Skills</Nav.Link>
             <Nav.Link href="#education" className='ms-3'>Education</Nav.Link>
             <Nav.Link href="/project" className='ms-3'>Projects</Nav.Link>
-            <Nav.Link href="/contact" className='ms-3'>Contact</Nav.Link>
+            <Nav.Link href="#contact" className='ms-3'>Contact</Nav.Link>
           </Nav>
           <Form className="d-flex me-4">
             <Form.Control type="search"  placeholder="Search" className="me-2" aria-label="Search" />
