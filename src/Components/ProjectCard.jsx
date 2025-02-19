@@ -6,7 +6,7 @@ import Project1 from '../assets/AnaSteel.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-
+import {serverUrl} from '../Services/seviceUrl'
 
 function ProjectCard({projects}) {
 
@@ -18,7 +18,7 @@ function ProjectCard({projects}) {
     return (
         <>
             <Card style={{ width: '100%' }} className='shadow border-0 mt-5 mt-md-0' >
-                <Card.Img onClick={handleShow} style={{ height: "200px" }} variant="top" src={Project1} className='w-100' />
+                <Card.Img onClick={handleShow} style={{ height: "200px" }} variant="top" src={`${serverUrl}/upload/${projects.projectImage}`} className='w-100' />
                 <Card.Body>
                     <Card.Title className='text-center' >{projects.title}</Card.Title>
                 </Card.Body>
@@ -34,7 +34,7 @@ function ProjectCard({projects}) {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-6">
-                                <img style={{ height: "200px" }} src={Project1} alt="No image" className='w-100' />
+                                <img style={{ height: "200px" }} src={`${serverUrl}/upload/${projects.projectImage}`} alt="No image" className='w-100' />
                             </div>
                             <div className="col-md-6">
                                 <h3>Description</h3>

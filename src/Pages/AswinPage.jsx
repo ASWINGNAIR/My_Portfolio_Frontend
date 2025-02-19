@@ -5,30 +5,50 @@ import React, { useEffect, useState } from 'react'
 import AddProject from '../Components/AddProject'
 import EditProject from '../Components/EditProject'
 import { Link } from 'react-router-dom'
-import { getAllProjectApi } from '../Services/allApi'
-import Project from './Project'
+import { adminProjectApi, deleteAdminProjectApi} from '../Services/allApi'
+// import Project from './Project'
 
 
 function AswinPage() {
 
-  const [allProject, setAllProject] = useState([])
+  const [adminProject, setAdminProject] = useState([])
+
+  const [deleteStatus, setDeleteStatus] = useState({})
 
 
-  const getAllProject = async () => {
+  const getAdminProject = async () => {
 
     const reqHeader = {
       "Content-Type": "application/json",
     }
-    const result = await getAllProjectApi(reqHeader)
+    const result = await adminProjectApi(reqHeader)
     // console.log(result.data);
-    setAllProject(result.data)
+    setAdminProject(result.data)
   }
-  console.log(allProject);
+  console.log(adminProject);
+
+
+  const handleDelete=async(id)=>{
+
+    const reqHeader = {
+      "Content-Type": "application/json",
+    }
+    const result = await deleteAdminProjectApi(id,reqHeader)
+    console.log(result);
+    if(result.status == 200){
+      setDeleteStatus(result)
+      alert('Project Deleted successfully')
+    }
+    else{
+      alert('Something Went Wrong')
+    }
+  }
+
 
 
   useEffect(() => {
-    getAllProject()
-  }, [])
+    getAdminProject()
+  }, [deleteStatus])
 
   return (
     <>
@@ -40,15 +60,15 @@ function AswinPage() {
         <div className="d-flex justify-content-between">
           <h3>My Project</h3>
         </div>
-        {allProject?.length > 0 ?
-          allProject?.map((item) => (
-            <div className='p-3 bg-light mt-4 rounded d-flex align-item-center justify-content-between' key={item._id}>
+        {adminProject?.length > 0 ?
+          adminProject?.map((item) => (
+            <div className='p-3 bg-light mt-4 rounded d-flex align-item-center justify-content-between'>
               <h5>{item?.title}</h5>
               <div className='d-flex mt-2'>
-                <EditProject />
+                <EditProject projects={item} />
                 <Link to={item?.github} target='_blank'><FontAwesomeIcon icon={faGithub} className='me-4 text-warning' /></Link>
                 <Link to={item?.website} target='_blank'><FontAwesomeIcon icon={faGlobe} className='me-4 text-success' /></Link>
-                <FontAwesomeIcon icon={faTrash} className='me-4 text-danger' />
+                <FontAwesomeIcon onClick={() => handleDelete(item?._id)} icon={faTrash} className='me-4 text-danger' />
               </div>
             </div>
           ))
@@ -60,10 +80,10 @@ function AswinPage() {
       </div>
 
         
-     {allProject?.map((item)=>(
+     {/* {allProject?.map((item)=>(
       <Project projects={item} />
      ))
-    }
+    } */}
 
 
     </>

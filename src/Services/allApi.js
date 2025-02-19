@@ -7,6 +7,22 @@ export const addProjectApi = async(reqBody,reqHeader)=>{
 }
 
 // get project
-export const getAllProjectApi = async(reqHeader)=>{
-    return await commonApi('GET',`${serverUrl}/all-project`,"",reqHeader)
+export const getAllProjectApi = async(searchKey,reqHeader)=>{
+    return await commonApi('GET',`${serverUrl}/all-project?search=${searchKey}`,"",reqHeader)
+}
+
+
+// get admin projects
+export const adminProjectApi = async()=>{
+    return await commonApi('GET',`${serverUrl}/admin-project`)
+}
+
+// delete admin projects
+export const deleteAdminProjectApi = async(id,reqHeader)=>{
+    return await commonApi('DELETE',`${serverUrl}/remove-adminproject/${id}`,{},reqHeader)
+}
+
+// update admin project
+export const updateAdminProjectApi = async(id,reqBody,reqHeader)=>{
+    return await commonApi('PUT',`${serverUrl}/update-adminProject/${id}`,reqBody,reqHeader)
 }

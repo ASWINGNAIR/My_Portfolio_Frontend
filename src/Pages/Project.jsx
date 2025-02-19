@@ -9,22 +9,26 @@ function Project({ projects }) {
 
   const [allProject, setAllProject] = useState([])
 
+  const [searchKey, setSearchKey] = useState("")
+
 
   const getAllProject = async () => {
 
     const reqHeader = {
       "Content-Type": "application/json",
     }
-    const result = await getAllProjectApi(reqHeader)
+    const result = await getAllProjectApi(searchKey , reqHeader)
     // console.log(result.data);
     setAllProject(result.data)
   }
   console.log(allProject);
 
+  console.log(searchKey);
+
 
   useEffect(() => {
     getAllProject()
-  }, [])
+  }, [searchKey])
 
 
 
@@ -38,7 +42,7 @@ function Project({ projects }) {
             <div className="row">
               <div className="col-md-4"></div>
               <div className="col-md-4 d-flex">
-                <input type="text" placeholder='Technologies' className='form-control shadow' />
+                <input type="text" onChange={(e) => setSearchKey(e.target.value)} placeholder='Technologies' className='form-control shadow' />
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "lightgray", marginTop: "10px", marginLeft: "30px" }} />
               </div>
               <div className="col-md-4"></div>
