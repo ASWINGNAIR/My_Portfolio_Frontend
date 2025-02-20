@@ -6,7 +6,6 @@ import AddProject from '../Components/AddProject'
 import EditProject from '../Components/EditProject'
 import { Link } from 'react-router-dom'
 import { adminProjectApi, deleteAdminProjectApi} from '../Services/allApi'
-// import Project from './Project'
 
 
 function AswinPage() {
@@ -78,12 +77,6 @@ function AswinPage() {
           <h4 className='text-center text-warning mt-5'>No Project added</h4>}
 
       </div>
-
-        
-     {/* {allProject?.map((item)=>(
-      <Project projects={item} />
-     ))
-    } */}
 
 
     </>
