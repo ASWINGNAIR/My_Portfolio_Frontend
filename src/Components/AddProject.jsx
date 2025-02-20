@@ -85,6 +85,7 @@ function AddProject() {
         alert('Project added successfully')
         setTimeout(() => {
           handleClose()
+          window.location.reload()
         }, 2000)
 
 
